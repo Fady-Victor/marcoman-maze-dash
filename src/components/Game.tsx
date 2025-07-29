@@ -21,9 +21,16 @@ export const Game = () => {
   const lastTimeRef = useRef<number>(0);
 
   const initializeGame = useCallback(() => {
-    const initialState = createLevel1();
-    gameEngine.current.setGameState(initialState);
-    setGameState(initialState);
+    console.log('Initializing game...');
+    try {
+      const initialState = createLevel1();
+      console.log('Initial state created:', initialState);
+      gameEngine.current.setGameState(initialState);
+      setGameState(initialState);
+      console.log('Game state set successfully');
+    } catch (error) {
+      console.error('Error initializing game:', error);
+    }
   }, []);
 
   const gameLoop = useCallback((currentTime: number) => {
@@ -147,7 +154,10 @@ export const Game = () => {
     };
   }, [gameState?.gameStatus, gameLoop]);
 
+  console.log('Game render - gameState:', gameState);
+  
   if (!gameState) {
+    console.log('Game state is null, showing loading screen');
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
         <div className="text-foreground text-xl game-text">Loading Super Maze Quest...</div>
@@ -155,6 +165,7 @@ export const Game = () => {
     );
   }
 
+  console.log('Rendering game with state:', gameState.gameStatus);
   return (
     <div className="flex flex-col items-center min-h-screen bg-background p-4">
       <div className="relative">
