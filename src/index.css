@@ -2,41 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Super Maze Quest - Retro Pixel Game Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Retro Game Colors */
+    --background: 220 25% 8%;
+    --foreground: 50 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Game UI */
+    --card: 220 20% 12%;
+    --card-foreground: 50 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 50 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Mario-inspired Blues */
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Coin Yellow */
+    --secondary: 50 100% 60%;
+    --secondary-foreground: 220 25% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 215 15% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Power-up Pink */
+    --accent: 320 70% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Enemy Red */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Game-specific colors */
+    --coin: 50 100% 60%;
+    --powerup: 320 70% 60%;
+    --enemy: 0 85% 60%;
+    --platform: 120 30% 40%;
+    --wall: 220 15% 25%;
+    --ladder: 30 60% 45%;
 
-    --radius: 0.5rem;
+    --border: 220 15% 30%;
+    --input: 220 15% 30%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.25rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +113,47 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
   }
+}
+
+/* Game-specific utilities */
+.pixel-perfect {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.game-text {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+}
+
+@keyframes coin-spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes power-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes enemy-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-coin-spin {
+  animation: coin-spin 2s linear infinite;
+}
+
+.animate-power-pulse {
+  animation: power-pulse 1s ease-in-out infinite;
+}
+
+.animate-enemy-float {
+  animation: enemy-float 2s ease-in-out infinite;
 }

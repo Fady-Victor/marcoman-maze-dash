@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Game-specific colors
+				coin: 'hsl(var(--coin))',
+				powerup: 'hsl(var(--powerup))',
+				enemy: 'hsl(var(--enemy))',
+				platform: 'hsl(var(--platform))',
+				wall: 'hsl(var(--wall))',
+				ladder: 'hsl(var(--ladder))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
